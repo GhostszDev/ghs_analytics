@@ -10,7 +10,11 @@ Author URI: http://GhostszMusic.com
 
 $domain = "";
 
-function ghs_admin_scrs() {
+function ghs_admin_scrs($hook) {
+
+    if ( $hook != 'toplevel_page_ghs_analytics') {
+        return;
+    }
 
     //styles
     wp_enqueue_style( 'bootstrap', plugin_dir_url( __FILE__ ) . 'css/bootstrap.min.css');
