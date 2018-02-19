@@ -99,11 +99,9 @@
             <div class="row">
                 <div class="col-md-8">
 
-                    <div class="widget white no-gape">
+                    <div class="widget white no-gape" ng-init="getSocialStats()">
                         <div class="widget-controls">
-                            <span class="close-content"><i class="fa fa-trash-o"></i></span>
-                            <span class="expand-content"><i class="fa fa-expand"></i></span>
-                            <span class="refresh-content"><i class="fa fa-refresh"></i></span>
+                            <span class="refresh-content" ng-click="getSocialStats()"><i class="fa fa-refresh"></i></span>
                         </div><!-- Widget Controls -->
                         <div class="widget-title">
                             <h3>Social Activities</h3>
@@ -111,14 +109,10 @@
                         <div class="widget-content">
                             <div class="social-activities">
                                 <ul>
-                                    <li><i class="ti-facebook" style="background-color:#417db5;"></i><h3>89k</h3><span>FRIENDS</span></li>
-                                    <li><i class="ti-google" style="background-color:#fb3434;"></i><h3>785</h3><span>FOLLOWERS</span></li>
-                                    <li><i class="ti-linkedin" style="background-color:#3f73a4;"></i><h3>670+</h3><span>CONTACTS</span></li>
-                                    <li><i class="ti-twitter" style="background-color:#5bafff;"></i><h3>456k</h3><span>FOLLOWERS</span></li>
-                                    <li><i class="ti-soundcloud" style="background-color:#ff973a;"></i><h3>4k</h3><span>FOLLOWERS</span></li>
-                                    <li><i class="ti-vimeo" style="background-color:#444444;"></i><h3>6,986</h3><span>VIEWS</span></li>
+                                    <li ng-repeat="sa in social">
+                                        <i class="ti-{{sa.type}}" ng-style="{'background-color':'#{{sa.color}}'}"></i><h3>{{sa.amount}}</h3><span>{{sa.label}}</span>
+                                    </li>
                                 </ul>
-                                <a href="#" title="">See all activities</a>
                             </div>
                         </div>
                     </div>

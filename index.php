@@ -8,7 +8,7 @@ Version: 0.1
 Author URI: http://GhostszMusic.com
 */
 
-$domain = "";
+$domain = site_url();
 
 function ghs_admin_scrs($hook) {
 
@@ -39,7 +39,6 @@ function ghs_admin_scrs($hook) {
 
 }
 
-
 function ghs_admin_add_page() {
     add_menu_page( 'Ghs Analytics', 'GHS Analytics', 'manage_options', 'ghs_analytics', 'ghs_admin_create_page', '', 126 );
 }
@@ -48,7 +47,7 @@ function ghs_admin_create_page(){
     require_once(dirname( __FILE__ ) . '/pages/admin-dashboard.html');
 }
 
-
 //add actions
 add_action( 'admin_menu', 'ghs_admin_add_page' );
 add_action( 'admin_enqueue_scripts', 'ghs_admin_scrs' );
+?>

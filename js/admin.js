@@ -3,6 +3,7 @@ angular.module('GHS_admin_mod', ['ngRoute', 'ui.bootstrap'])
 
         $scope.domain = "https://ghostszmusic.com/";
         $scope.recentComments = [];
+        $scope.social = [];
 
         $scope.getRecentComments = function () {
 
@@ -19,6 +20,29 @@ angular.module('GHS_admin_mod', ['ngRoute', 'ui.bootstrap'])
 
                     if (response.data.success) {
                         $scope.recentComments = response.data.recentComments;
+                    } else {
+                        console.error(response.data.error_message);
+                    }
+
+                })
+                .catch(function () {
+
+                });
+
+        };
+        $scope.getSocialStats = function () {
+
+            $http({
+                url: $scope.domain + "wp-json/ghs_api/v1/getSocialStats",
+                method: "GET",
+                headers: {
+                    'content-type': 'application/x-www-form-urlencoded'
+                }
+            })
+                .then(function(response) {
+
+                    if (response.data.success) {
+                        $scope.social = response.data.social;
                     } else {
                         console.error(response.data.error_message);
                     }
